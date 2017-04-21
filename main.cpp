@@ -13,21 +13,38 @@
 using namespace std;
 
 // testing
-int main() {
-    /*
-    // Console
-    vector<int> testVec = {31, -41, 59, 26, -53, 58, 97, -93, -23, 84};
-    Result res = dpMSS(testVec);
-    cout << res.sum << endl;
+int main(int argc, char* argv[]) {
     
-    for (int i = res.low_idx; i <= res.high_idx; i++)
-        cout << testVec[i] << " ";
-    cout << endl;
-    cout << "Subvector: " << "[" << res.low_idx << ", ";
+    // Console
+    vector<int> testVec;
+   
+    // Reading from a File    
+    // Xcode: Project Navigator -> Products -> right click exec file    
+    //  -> show in finder -> make a file named "Input.txt" -> put numbers in   
+    ReadFromFile fin(argv[0]);    
+    vector<int> v;    
+    int temp = 0;        
+    
+    while (fin >> temp)        
+        v.push_back(temp);        
+    
+    for(auto x : v)        
+        cout << x << "\n";
+    
+    Result res = dpMSS(testVec);    
+    cout << res.sum << endl;        
+    
+    for (int i = res.low_idx; i <= res.high_idx; i++)        
+        cout << testVec[i] << " ";    
+    cout << endl;    
+    
+    cout << "Subvector: " << "[" << res.low_idx << ", ";    
     cout << res.high_idx << "]" << endl;
-
-    cout << endl;
-    */
+    cout << endl;
+    
+    
+    
+    
     
     // Writing to a File
     OutputToFile fout("Output.txt");
@@ -35,18 +52,7 @@ int main() {
         fout << i << " ";
     }
     
-    // Reading from a File
-    // Xcode: Project Navigator -> Products -> right click exec file
-    //  -> show in finder -> make a file named "Input.txt" -> put numbers in
-    ReadFromFile fin("Input.txt");
-    vector<int> v;
-    int temp = 0;
     
-    while (fin >> temp)
-        v.push_back(temp);
-    
-    for(auto x : v)
-        cout << x << "\n";
 
     
     return 0;
