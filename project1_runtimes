@@ -54,6 +54,9 @@ int main() {
     
     //display result
     cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;
+    
+    //clear timer
+    timer = 0;
   }
   
   //clear vector
@@ -87,7 +90,10 @@ int main() {
     avg_time = timer / 3.0;        
     
     //display result    
-    cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;           
+    cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;  
+    
+    //clear timer
+    timer = 0;
   }
   
   //clear vector
@@ -121,7 +127,10 @@ int main() {
     avg_time = timer / 3.0;        
     
     //display result    
-    cout << "For vector size " << numEle << ", algorithm #3 took " << avg_time << " nanoseconds" << endl;         
+    cout << "For vector size " << numEle << ", algorithm #3 took " << avg_time << " nanoseconds" << endl;     
+    
+    //clear timer
+    timer = 0;
   }
   
   //clear vector
@@ -156,7 +165,10 @@ int main() {
     avg_time = timer / 3.0;        
     
     //display result    
-    cout << "For vector size " << numEle << ", algorithm #4 took " << avg_time << " nanoseconds" << endl;         
+    cout << "For vector size " << numEle << ", algorithm #4 took " << avg_time << " nanoseconds" << endl;       
+    
+    //clear timer
+    timer = 0;
   }
   
   return 0;
