@@ -3,4 +3,11 @@
 * CS325 project 1 algorithm run time comparison
 *********************************/
 
-#
+#include <iostream>
+#include <chrono>
+#include <random>
+#include <vector>
+
+typedef std::chrono::high_resolution_clock Clock;
+
+
