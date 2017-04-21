@@ -54,5 +54,32 @@ int main() {
     numEle *= 2;
   }
   
-
+  //ALGORITHM #2: betterMSS    
+  
+  //numele variable may need to start at different value for different algorithms    
+  int numEle = 100;    
+  
+  //test 10 different vector lengths  
+  for (int i=0; i < 10; ++i) {      
+    
+    // fill the vector with random numbers            
+    for (int j=0; j < numEle; ++j)              
+      vlist.push_back(dist(mt));           
+    
+    // find max subarray using algorithm #2 and calculate run time    
+    // for increased accuracy, run three times and calculate average run time    
+    for (int k=0; k < 3; ++k) {      
+      auto t1 = Clock::now();          
+      result = betterMSS(vlist);         
+      auto t2 = Clock::now();                    
+      timer += chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();       
+    }    
+    avg_time = timer / 3.0;        
+    
+    //display result    
+    cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;        
+    
+    //double vector size    
+    numEle *= 2;  
+    }
   
