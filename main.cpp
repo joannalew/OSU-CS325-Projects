@@ -21,12 +21,11 @@ int main(int argc, char* argv[]) {
     // Reading from a File    
     // Xcode: Project Navigator -> Products -> right click exec file    
     //  -> show in finder -> make a file named "Input.txt" -> put numbers in   
-    ReadFromFile fin(argv[0]);    
-    vector<int> v;    
+    ReadFromFile fin(argv[0]);       
     int temp = 0;        
     
     while (fin >> temp)        
-        v.push_back(temp);        
+        testVec.push_back(temp);        
     
     for(auto x : v)        
         cout << x << "\n";
