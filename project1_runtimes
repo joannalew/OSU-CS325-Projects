@@ -2,12 +2,57 @@
 * Joanna Lew, Daniel Olivas, Nathan Stauffer
 * CS325 project 1 algorithm run time comparison
 *********************************/
-
+#include ""
 #include <iostream>
 #include <chrono>
 #include <random>
 #include <vector>
+using namespace std;
 
-typedef std::chrono::high_resolution_clock Clock;
+typedef chrono::high_resolution_clock Clock;
 
 
+int main() {   
+  Result result;            //returned by algorithms 1 - 4
+  int timer = 0;            //accumulates time for three runs of each algorithm
+  double avg_time = 0.0;     //holds average of three timing runs 
+  vector<int> vlist;        
+  
+  // set the seed for random numbers   
+  // 'rd' for non-deterministic 32-bit seed    
+  random_device rd;    
+  mt19937 mt(rd());    
+  uniform_int_distribution<int> dist(0, numEle);         
+  
+  //ALGORITHM #1: badMSS
+  
+  //numele variable may need to start at different value for different algorithms  
+  int numEle = 100;
+  
+  //test 10 different vector lengths
+  for (int i=0; i < 10; ++i) {
+  
+    // fill the vector with random numbers        
+    for (int j=0; j < numEle; ++j)        
+      vlist.push_back(dist(mt));   
+    
+    // find max subarray using algorithm #1 and calculate run time
+    // for increased accuracy, run three times and calculate average run time
+    for (int k=0; k < 3; ++k) {
+      auto t1 = Clock::now();    
+      result = badMSS(vlist);   
+      auto t2 = Clock::now();        
+      
+      timer += chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();   
+    }
+    avg_time = timer / 3.0;
+    
+    //display result
+    cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;
+    
+    //double vector size
+    numEle *= 2;
+  }
+  
+
+  
