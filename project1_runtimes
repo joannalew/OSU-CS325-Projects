@@ -27,14 +27,19 @@ int main() {
   //ALGORITHM #1: badMSS
   
   //numele variable may need to start at different value for different algorithms  
-  int numEle = 100;
+  int numEle = 50;
+  
+  //fill vector with first numEle elements
+  for (int i=0; i < numEle; ++i)
+    vlist.push_back(dist(mt));
   
   //test 10 different vector lengths
   for (int i=0; i < 10; ++i) {
   
-    // fill the vector with random numbers        
-    for (int j=0; j < numEle; ++j)        
-      vlist.push_back(dist(mt));   
+    // fill the rest of larger vector with random numbers        
+    for (int j=numEle; j < numEle * 2; ++j)        
+      vlist.push_back(dist(mt)); 
+    numEle *= 2;
     
     // find max subarray using algorithm #1 and calculate run time
     // for increased accuracy, run three times and calculate average run time
@@ -49,22 +54,27 @@ int main() {
     
     //display result
     cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;
-    
-    //double vector size
-    numEle *= 2;
   }
+  
+  //clear vector
+  vlist.clear();
   
   //ALGORITHM #2: betterMSS    
   
   //numele variable may need to start at different value for different algorithms    
-  int numEle = 100;    
+  int numEle = 50;    
   
+  //fill vector with first numEle elements  
+  for (int i=0; i < numEle; ++i)    
+    vlist.push_back(dist(mt));    
+    
   //test 10 different vector lengths  
   for (int i=0; i < 10; ++i) {      
     
-    // fill the vector with random numbers            
-    for (int j=0; j < numEle; ++j)              
-      vlist.push_back(dist(mt));           
+    // fill the rest of larger vector with random numbers            
+    for (int j=numEle; j < numEle * 2; ++j)              
+      vlist.push_back(dist(mt));     
+    numEle *= 2;    
     
     // find max subarray using algorithm #2 and calculate run time    
     // for increased accuracy, run three times and calculate average run time    
@@ -77,9 +87,77 @@ int main() {
     avg_time = timer / 3.0;        
     
     //display result    
-    cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;        
-    
-    //double vector size    
-    numEle *= 2;  
-    }
+    cout << "For vector size " << numEle << ", algorithm #1 took " << avg_time << " nanoseconds" << endl;           
+  }
   
+  //clear vector
+  vlist.clear();
+ 
+  //ALGORITHM #3: recursiveMSS    
+  
+  //numele variable may need to start at different value for different algorithms    
+  int numEle = 50;    
+  
+  //fill vector with first numEle elements  
+  for (int i=0; i < numEle; ++i)    
+    vlist.push_back(dist(mt));    
+    
+  //test 10 different vector lengths  
+  for (int i=0; i < 10; ++i) {      
+  
+    // fill the rest of larger vector with random numbers            
+    for (int j=numEle; j < numEle * 2; ++j)              
+      vlist.push_back(dist(mt));     
+    numEle *= 2;     
+      
+    // find max subarray using algorithm #3 and calculate run time    
+    // for increased accuracy, run three times and calculate average run time    
+    for (int k=0; k < 3; ++k) {      
+      auto t1 = Clock::now();          
+      result = recursiveMSS(vlist);         
+      auto t2 = Clock::now();                    
+      timer += chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();       
+    }    
+    avg_time = timer / 3.0;        
+    
+    //display result    
+    cout << "For vector size " << numEle << ", algorithm #3 took " << avg_time << " nanoseconds" << endl;         
+  }
+  
+  //clear vector
+  vlist.clear();
+  
+  //ALGORITHM #4: dpMSS    
+  
+  //numele variable may need to start at different value for different algorithms      
+  int numEle = 50;        
+  
+  //fill vector with first numEle elements    
+  for (int i=0; i < numEle; ++i)        
+    vlist.push_back(dist(mt));          
+  
+  //test 10 different vector lengths    
+  for (int i=0; i < 10; ++i) {            
+  
+    // fill the rest of larger vector with random numbers                
+    for (int j=numEle; j < numEle * 2; ++j)                    
+      vlist.push_back(dist(mt));         
+    numEle *= 2;          
+             
+    
+    // find max subarray using algorithm #4 and calculate run time    
+    // for increased accuracy, run three times and calculate average run time    
+    for (int k=0; k < 3; ++k) {      
+      auto t1 = Clock::now();          
+      result = dpMSS(vlist);         
+      auto t2 = Clock::now();                    
+      timer += chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count();       
+    }    
+    avg_time = timer / 3.0;        
+    
+    //display result    
+    cout << "For vector size " << numEle << ", algorithm #4 took " << avg_time << " nanoseconds" << endl;         
+  }
+  
+  return 0;
+}
