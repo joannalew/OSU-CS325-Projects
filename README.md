@@ -1,6 +1,7 @@
 # Notes
-Add notes by 1. clicking "README.md" (in the list with the .cpp files), 2. click the pencil icon next to "raw" "blame" "history"
-------
+
+#### Add notes by: <br> 1. clicking "README.md" (in the list with the .cpp files) <br> 2. clicking the pencil icon next to "raw" "blame" "history"
+
 
 4/20 (Joanna) : Hey Nathan, I finally figured out what you meant by the recursive solution having trouble returning the proper indices. 
 Got it working! It's kinda messy, but using your Result struct, I basically "set" the indices every time I "set" the sum. I think it
