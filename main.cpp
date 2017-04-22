@@ -12,48 +12,60 @@
 
 using namespace std;
 
-// testing
 int main(int argc, char* argv[]) {
-    
-    // Console
+   
     vector<int> testVec;
    
-    // Reading from a File    
-    // Xcode: Project Navigator -> Products -> right click exec file    
-    //  -> show in finder -> make a file named "Input.txt" -> put numbers in   
+    //take input from file and fill vector 
     ReadFromFile fin(argv[0]);       
     int temp = 0;        
     
     while (fin >> temp)        
         testVec.push_back(temp);        
     
-    for(auto x : v)        
-        cout << x << "\n";
+    //display original array
+    cout << "array from file: \n";
+    for(auto x : testVec)        
+        cout << x << " ";
+    cout << endl << endl;
     
-    Result res = dpMSS(testVec);    
-    cout << res.sum << endl;        
-    
-    for (int i = res.low_idx; i <= res.high_idx; i++)        
-        cout << testVec[i] << " ";    
-    cout << endl;    
-    
-    cout << "Subvector: " << "[" << res.low_idx << ", ";    
-    cout << res.high_idx << "]" << endl;
-    cout << endl;
-    
-    
-    
-    
-    
-    // Writing to a File
+    //run algorithm 1
+    Result res = badMSS(testVec);    
+    //write result to file
     OutputToFile fout("Output.txt");
-    for (int i=0; i < 10; i++){
-        fout << i << " ";
-    }
+    fout << "max subarray for algorithm #1:\n";
+    for (int i = res.low_idx; i <= res.high_idx; i++)        
+        fout << testVec[i] << " ";    
+    fout << "/n";
+    fout << "sum: " << res.sum << "\n";
     
+    //run algorithm 2
+    res = betterMSS(testVec);
+    //write result to file
+    fout << "max subarray for algorithm #2:\n";    
+    for (int i = res.low_idx; i <= res.high_idx; i++)                
+        fout << testVec[i] << " ";        
+    fout << "/n";    
+    fout << "sum: " << res.sum << "\n";
     
+    //run algorithm 3
+    res = recursiveMSS(testVec);
+    //write result to file
+    fout << "max subarray for algorithm #3:\n";    
+    for (int i = res.low_idx; i <= res.high_idx; i++)                
+        fout << testVec[i] << " ";        
+    fout << "/n";    
+    fout << "sum: " << res.sum << "\n";
+    
+    //run algorithm 4
+    res = dppMSS(testVec);
+    //write result to file
+    fout << "max subarray for algorithm #4:\n";    
+    for (int i = res.low_idx; i <= res.high_idx; i++)                
+        fout << testVec[i] << " ";        
+    fout << "/n";    
+    fout << "sum: " << res.sum << "\n";
 
-    
     return 0;
 }
 
