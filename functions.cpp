@@ -28,7 +28,7 @@ Result badMSS(vector<int>& nums){
     maax.sum = 0;
     
     for (int i=0; i < size; i++)
-        for (int j=i+1; j < size; j++){
+        for (int j=i; j < size; j++){
             int tempSum = 0;
             
             for (int k=i; k <= j; k++)
@@ -174,21 +174,30 @@ Result recursiveMSS(vector<int>& nums){
  **/
 Result dpMSS(vector<int>& nums){
     size_t size = nums.size();
-    Result maax;
-    maax.sum = 0;
-    int tempSum = 0;
+    Result maax, temp;
+    maax.sum = temp.sum = 0;
+    maax.low_idx = temp.low_idx = 0;
+    maax.high_idx = temp.high_idx = 0;
+    
     
     for (int i=0; i < size; i++){
-        tempSum += nums[i];             // running sum
-        
-        if (tempSum <= 0){              // if sum turns negative
-            tempSum = 0;                // reset it to 0
-            maax.low_idx = i+1;         // next potential "largest sum" subvector
-            maax.high_idx = i+1;        // begins at next element, i+1
+        temp.sum += nums[i];             // running sum
+        //cout << "i: " << i << " v[i]: " << nums[i] << " tempSum: " << tempSum << endl;
+        if (temp.sum <= 0){              // if sum turns negative
+            temp.sum = 0;                // reset it to 0
+            if (i+1 < size){
+                temp.low_idx = i+1;     // next potential "largest sum" subvector
+                temp.high_idx = i+1;
+            }
         }
-        else if (tempSum > maax.sum){   // if local sum > global
-            maax.sum = tempSum;         // replace global with local
-            maax.high_idx++;            // extend the subvector
+        else if (temp.high_idx + 1 < size && temp.low_idx != i ){
+            temp.high_idx++;
+        }
+        //cout << "low: " << maax.low_idx << " high: " << maax.high_idx << endl;
+        if (temp.sum > maax.sum){
+            maax.sum = temp.sum;
+            maax.low_idx = temp.low_idx;
+            maax.high_idx = temp.high_idx;
         }
     }
     return maax;
