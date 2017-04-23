@@ -182,20 +182,18 @@ Result dpMSS(vector<int>& nums){
     
     for (int i=0; i < size; i++){
         temp.sum += nums[i];             // running sum
-        //cout << "i: " << i << " v[i]: " << nums[i] << " tempSum: " << tempSum << endl;
         if (temp.sum <= 0){              // if sum turns negative
             temp.sum = 0;                // reset it to 0
             if (i+1 < size){
-                temp.low_idx = i+1;     // next potential "largest sum" subvector
-                temp.high_idx = i+1;
+                temp.low_idx = i+1;      // next potential "largest sum" subvector
+                temp.high_idx = i+1;     // begins w/ the next element in vector
             }
         }
         else if (temp.high_idx + 1 < size && temp.low_idx != i ){
-            temp.high_idx++;
+            temp.high_idx++;             // extend subvector if possible (tempSum > 0, in bounds)
         }
-        //cout << "low: " << maax.low_idx << " high: " << maax.high_idx << endl;
-        if (temp.sum > maax.sum){
-            maax.sum = temp.sum;
+        if (temp.sum > maax.sum){        // if local max > global max
+            maax.sum = temp.sum;         // replace max and indices
             maax.low_idx = temp.low_idx;
             maax.high_idx = temp.high_idx;
         }
