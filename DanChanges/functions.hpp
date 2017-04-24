@@ -3,7 +3,7 @@
 //  hw1.1
 //
 //  Created by Joanna on 4/21/17.
-//  Copyright Â© 2017 Joanna. All rights reserved.
+//  Copyright © 2017 Joanna. All rights reserved.
 //
 
 #ifndef functions_hpp
@@ -43,7 +43,7 @@ private:
 };
 
 // RAII: ofstream (make/update a file)
-class OutputToFile {
+/*class OutputToFile {
 	friend OutputToFile& operator<<(OutputToFile&, int);
 	friend OutputToFile& operator<<(OutputToFile&, const string&);
 
@@ -54,6 +54,6 @@ public:
 private:
 	ofstream fout;
 };
-
+*/
 
 #endif /* functions_hpp */

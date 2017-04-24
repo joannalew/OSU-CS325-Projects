@@ -3,7 +3,7 @@
 //  hw1.1
 //
 //  Created by Joanna on 4/21/17.
-//  Copyright Â© 2017 Joanna. All rights reserved.
+//  Copyright © 2017 Joanna. All rights reserved.
 //
 
 #include "functions.hpp"
@@ -23,7 +23,7 @@ Using 3 for-loops
 @returns a Result with the sum, subvector begin, end indices
 **/
 Result badMSS(vector<int>& nums) {
-	size_t size = nums.size();
+	int size = nums.size();
 	Result maax;
 	maax.sum = 0;
 
@@ -49,7 +49,7 @@ Using 2 for-loops
 @returns a Result with the sum, subvector begin, end indices
 **/
 Result betterMSS(vector<int>& nums) {
-	size_t size = nums.size();
+	int size = nums.size();
 	Result maax;
 	maax.sum = 0;
 	int tempSum;
@@ -173,7 +173,7 @@ Using dynamic programming
 @returns a Result with the sum, subvector begin, end indices
 **/
 Result dpMSS(vector<int>& nums) {
-	size_t size = nums.size();
+	int size = nums.size();
 	Result maax, temp;
 	maax.sum = temp.sum = 0;
 	maax.low_idx = temp.low_idx = 0;
@@ -202,33 +202,7 @@ Result dpMSS(vector<int>& nums) {
 }
 
 
-/** Constructor: open file and check that file is readable
-@param filename is the name of the file to open
-@writes "Couldn't open file!" to console if failed to open file */
-/*ReadFromFile::ReadFromFile(const string& filename) : fin(filename) {
-	if (fin.fail())
-		cout << "Couldn't open file!\n";
-
-};
-
-/** Destructor automatically closes file *//*
-ReadFromFile::~ReadFromFile() {
-	fin.close();
-}
-
-
-ReadFromFile& operator >> (ReadFromFile& input_file, int& a) {
-	input_file.fin >> a;
-	return input_file;
-}
-
-ReadFromFile::operator bool() {
-	return !fin.fail();
-}*/
-
-
-
-OutputToFile::OutputToFile(const string& filename) : fout(filename) { }
+/*OutputToFile::OutputToFile(const string& filename) : fout(filename) { }
 
 OutputToFile& operator<<(OutputToFile& output_file, int a) {
 	output_file.fout << a;
@@ -242,4 +216,4 @@ OutputToFile& operator<<(OutputToFile& output_file, const string& s) {
 
 OutputToFile::~OutputToFile() {
 	fout.close();
-}
+}*/
