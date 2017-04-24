@@ -1,6 +1,6 @@
 CXX=g++
 RM=rm -f
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -std=c++11
 
 
 testMSS: main.o functions.o 
