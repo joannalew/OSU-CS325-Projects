@@ -134,8 +134,8 @@ ReadFromFile::ReadFromFile(const string& filename) : fin(filename) {
     
 };
 
-/** Checks for end of file 
-    @returns true if end, false if not end **/
+/** Checks for end of file
+ @returns true if end, false if not end **/
 bool ReadFromFile::checkEnd(){
     return fin.eof();
 }
@@ -153,8 +153,8 @@ ReadFromFile::~ReadFromFile(){
 }
 
 /** Get string values from file until line break
-    @param file is file to get values from
-    @param s is the string to get */
+ @param file is file to get values from
+ @param s is the string to get */
 void getline(ReadFromFile& file, string& s){
     getline(file.fin, s);
 }
@@ -171,8 +171,8 @@ void getrow(ReadFromFile& file, int& a){
 }
 
 /** Get integer values from file until line break
-    @param file is the file to get values from 
-    @param v is the vector to store integers in */
+ @param file is the file to get values from
+ @param v is the vector to store integers in */
 void getrow(ReadFromFile& file, vector<int>& v){
     string row;
     getline(file, row);
@@ -186,9 +186,9 @@ void getrow(ReadFromFile& file, vector<int>& v){
 }
 
 /** Overload >> for readability --> same as cin >>
-    @param input_file is the file to read from
-    @param a is the integer to store value in 
-    @returns input_file for chaining */
+ @param input_file is the file to read from
+ @param a is the integer to store value in
+ @returns input_file for chaining */
 ReadFromFile& operator>>(ReadFromFile& input_file, int& a){
     input_file.fin >> a;
     return input_file;
@@ -203,19 +203,19 @@ ReadFromFile::operator bool(){
 /** Constructor: open file to write to */
 OutputToFile::OutputToFile(const string& filename) : fout(filename) { }
 
-/** Overload << for readability --> same as cout << 
-    @param output_file is the file to write to
-    @param a is the integer to write 
-    @returns output_file for chaining */
+/** Overload << for readability --> same as cout <<
+ @param output_file is the file to write to
+ @param a is the integer to write
+ @returns output_file for chaining */
 OutputToFile& operator<<(OutputToFile& output_file, int a){
     output_file.fout << a;
     return output_file;
 }
 
-/** Overload << for readability --> same as cout << 
-    @param output_file is the file to write to
-    @param s is the string to write
-    @returns output_file for chaining */
+/** Overload << for readability --> same as cout <<
+ @param output_file is the file to write to
+ @param s is the string to write
+ @returns output_file for chaining */
 OutputToFile& operator<<(OutputToFile& output_file, const string& s){
     output_file.fout << s;
     return output_file;
@@ -225,4 +225,5 @@ OutputToFile& operator<<(OutputToFile& output_file, const string& s){
 OutputToFile::~OutputToFile(){
     fout.close();
 }
+
 

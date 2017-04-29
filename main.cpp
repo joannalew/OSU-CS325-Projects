@@ -3,7 +3,7 @@
  * Daniel Olivas, Nathan Stauffer, Joanna Lew
  * Project 2: Coin Change
  
-**********************************/
+ **********************************/
 
 #include <iostream>
 #include <vector>
@@ -12,9 +12,23 @@
 
 using namespace std;
 
-int main() {
-    ReadFromFile fin("Input.txt");
-    OutputToFile fout("Output.txt");
+int main(int argc, char** argv) {
+    if (argc > 2){
+        cout << "Too many arguments. \n";
+        return 0;
+    }
+    else if (argc < 2){
+        cout << "Please enter filename. \n";
+        return 0;
+    }
+    
+    string outfile = argv[1];
+    outfile = outfile.substr(0,outfile.size()-4);
+    outfile += "change.txt";
+    cout << "outfile: " << outfile << "\n";
+    
+    ReadFromFile fin(argv[1]);
+    OutputToFile fout(outfile);
     vector<int> coinValues;
     vector<int> result;
     int amount = 0;
@@ -25,6 +39,9 @@ int main() {
         sum = 0;
         getrow(fin, coinValues);
         getrow(fin, amount);
+        
+        if (coinValues.empty())
+            break;
         
         for (int& values : coinValues)
             fout << values << " ";
@@ -52,6 +69,9 @@ int main() {
         getrow(fin, coinValues);
         getrow(fin, amount);
         
+        if (coinValues.empty())
+            break;
+        
         for (int& values : coinValues)
             fout << values << " ";
         fout << "\n";
@@ -68,7 +88,7 @@ int main() {
         if (fin.checkEnd())
             break;
     }
-
+    
     fin.beginAnew();
     fout << "\n";
     
@@ -77,6 +97,9 @@ int main() {
         sum = 0;
         getrow(fin, coinValues);
         getrow(fin, amount);
+        
+        if (coinValues.empty())
+            break;
         
         for (int& values : coinValues)
             fout << values << " ";
@@ -94,6 +117,6 @@ int main() {
         if (fin.checkEnd())
             break;
     }
-    
     return 0;
 }
+
