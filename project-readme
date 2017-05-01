@@ -1,10 +1,18 @@
 To use program:
 
-1. add a .txt file to this folder (example: amount.txt)
-2. type ‘make’; hit ‘enter’
-3. type ‘./testCoin’; hit ‘enter’ to run program
+1. add a [input_file].txt file to this folder 
+2. type ‘make’
+3. type ‘./testCoin [input_file].txt’
 4. type ‘make clean’ to remove extraneous files
-5. open [input_file_name]change.txt to see results (example: amountchange.txt)
+5. open [input_file]change.txt to see results 
+
+
+Example:
+1. add amount.txt to this folder
+2. type make
+3. type ./testCoin amount.txt
+4. type make clean
+5. open amountchange.txt to see results
 
 
 ** Note: Input File should be in the following format
