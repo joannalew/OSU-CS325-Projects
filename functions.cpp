@@ -22,9 +22,6 @@ int slowHelper(vector<int>& values, int amount, vector<int>& coins, vector<int>&
     else if (amount == 0)
         return 0;
     
-    if (coins[amount - 1] != -123)          // if # of coins for amount already calculated
-        return coins[amount - 1];           // use that value
-    
     // calculate the least number of coins by
     // finding the minimum # of coins needed to make (amount - coin) cents
     int min = amount + 1;
