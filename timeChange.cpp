@@ -2,7 +2,7 @@
 * Joanna Lew, Daniel Olivas, Nathan Stauffer
 * CS325 project 2 algorithm run time comparison
 *********************************/
-#include "functions.cpp"
+#include "functions.hpp"
 #include <iostream>
 #include <vector>
 #include <fstream>
