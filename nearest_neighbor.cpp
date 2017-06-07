@@ -47,8 +47,9 @@ int main() {
     vector<int> distances;
     vector<int> visited;
     int distance;
-    
-    ReadFromFile fin("Input.txt");
+
+    string file = argv[1];
+    ReadFromFile fin(file);
     
     // get the data from file; shove into vector called cities
     // format is [id, x, y, id, x, y, ...]
@@ -96,15 +97,17 @@ int main() {
         visited.push_back(index);                       // update visited cities
         start = index;                                  // go to that city next
     }
-    
+
+    //Write to argument file .tour
+    file += ".tour";
+    OutputToFile fout(file);
+
+    // print distance traveled
+    fout << dist_traveled << "\n";
+
     // print tour
     for (auto& x : visited)
-        cout << x << " ";
-    cout << "\n";
-    
-    // print distance traveled
-    cout << dist_traveled << "\n";
-    
+        fout << x << " ";
     
     return 0;
 }
