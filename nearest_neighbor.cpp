@@ -98,6 +98,9 @@ int main(int arc, char *argv[]) {
         start = index;                                  // go to that city next
     }
 
+    // loop back to start; fix updated distance
+    dist_traveled += distances[visited[visited.size()-1] * num_cities + visited[0]];
+    
     //Write to argument file .tour
     file += ".tour";
     OutputToFile fout(file);
