@@ -107,7 +107,7 @@ int main() {
 
     // print tour
     for (auto& x : visited)
-        fout << x << " ";
+        fout << x << "\n";
     
     return 0;
 }
