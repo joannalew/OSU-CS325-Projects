@@ -42,7 +42,7 @@ bool vectorContains(vector<int>& anyVector, int search){
 }
 
 
-int main(int argc, char* argv[]) {
+int main() {
     vector<int> cities;
     vector<int> distances;
     vector<int> visited;
