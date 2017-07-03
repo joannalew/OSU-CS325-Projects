@@ -1,12 +1,13 @@
-# Notes
+# OSU CS325 Algorithms Group Projects
 
-#### Add notes by: <br> 1. clicking "README.md" (in the list with the .cpp files) <br> 2. clicking the pencil icon next to "raw" "blame" "history"
+Contributors: Nathan Stauffer, Daniel Olivas, Joanna Lew
 
+Spring 2017
 
-OSU CS 325 Group Projects
+C++ code for Algorithm Projects
 
-functions.hpp (.cpp) - contains 3 algorithms + file input/output
+Project 1: Max Sum Subarray
 
-main.cpp - gets input from file, outputs result of algorithms to file
+Project 2: Coin Change
 
-jo-coinchange.cpp - has all algorithms; prints to console
+Project 3: TSP (Nearest Neighbor)

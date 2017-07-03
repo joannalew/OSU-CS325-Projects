@@ -1,0 +1,8 @@
+times for test cases:
+test-input-1: 0 ms (could not get a time to register)
+test-input-2: 0 ms as well
+test-input-3: 50 ms
+test-input-4: 240 ms
+test-input-5: 1.29 s
+test-input-6: 10.24 s
+test-input-7: 122.22 s or 2 min 2 sec

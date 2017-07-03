@@ -42,14 +42,23 @@ bool vectorContains(vector<int>& anyVector, int search){
 }
 
 
-int main() {
+int main(int argc, char* argv[]) {
     vector<int> cities;
     vector<int> distances;
     vector<int> visited;
     int distance;
-
+    
+    // clock_t start1 = clock();
+    
+    
+    if (argc != 2){
+        cout << "Invalid number of arguments.\n";
+        exit(1);
+    }
+    
     string file = argv[1];
     ReadFromFile fin(file);
+
     
     // get the data from file; shove into vector called cities
     // format is [id, x, y, id, x, y, ...]
@@ -71,8 +80,11 @@ int main() {
             distances.push_back(distance);
         }
     }
+
     
-    int start = 0;                                      // starting city
+    // example 1: start = 11
+    // example 2: start = 11
+    int start = 11;                                     // starting city
     visited.push_back(start);                           // list of visited cities
     int min;
     int index;
@@ -92,28 +104,37 @@ int main() {
                 index = i;
             }
         }
-    
+
         dist_traveled += min;                           // update total dist traveled
         visited.push_back(index);                       // update visited cities
         start = index;                                  // go to that city next
     }
-
-    // loop back to start; fix updated distance
+    
+    // loop back to start; update distance traveled
     dist_traveled += distances[visited[visited.size()-1] * num_cities + visited[0]];
+    
+    // clock_t end = clock();
     
     //Write to argument file .tour
     file += ".tour";
     OutputToFile fout(file);
-
+    
     // print distance traveled
     fout << dist_traveled << "\n";
-
+    
     // print tour
     for (auto& x : visited)
         fout << x << "\n";
     
+    
+    /** for checking time
+    double duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+    cout<< "time: " << duration << "\n";
+    **/
+    
     return 0;
 }
+
 
 
 
